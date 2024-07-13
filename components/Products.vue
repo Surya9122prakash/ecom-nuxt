@@ -82,11 +82,11 @@ const addItemToCart = () => {
         <nuxt-link :to="`/products/${product._id}`" v-for="product in products" :key="product._id" class="group relative">
           <div class="group block overflow-hidden border border-accent rounded-xl border-opacity-10">
             <div class="p-1">
-              <div class="relative h-[300px] sm:h-[300px]">
+              <div class="relative h-[300px] sm:h-[300px] md:py-0 py-48">
                 <img :src="product.images[0]" alt="new-img"
-                  class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+                  class="absolute inset-0 h-fit md:h-full w-full object-cover opacity-100 group-hover:opacity-0" />
                 <img :src="product.images[1]" alt="new-img"
-                  class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+                  class="absolute inset-0 h-fit md:h-full w-full object-cover opacity-0 group-hover:opacity-100" />
               </div>
             </div>
             <div class="relative p-3 border-t">

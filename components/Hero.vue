@@ -55,7 +55,7 @@
 
 <template>
     <div v-if="product" class="relative overflow-hidden my-14 md:my-10">
-        <div class="lg:py-40 min-h-[650px] ">
+        <div class="lg:py-40 md:min-h-[650px] ">
             <div class="relative mx-auto max-w-screen-xl sm:static px-6 lg:px-8">
                 <div class="max-w-xl text-start">
                     <h1 class="text-4xl md:text-5xl max-md:mb-6 font-bold tracking-tight text-orange-500">

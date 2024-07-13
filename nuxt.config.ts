@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     'nuxt-vue3-google-signin',
+    '@pinia/nuxt'
   ],
   googleSignIn: {
     clientId: process.env.GOOGLE_CLIENT_ID,
@@ -12,4 +13,7 @@ export default defineNuxtConfig({
     '~/plugins/CartContext.js',
     '~/plugins/vue3-google-login.js'
   ],
+  build: {
+    transpile: ['vuex'],
+  },
 });
