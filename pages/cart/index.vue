@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto px-4 py-6 max-w-screen-xl">
-    <section class="flex justify-between max-md:flex-col space-x-4">
+    <section class="lg:flex justify-between flex-col space-x-4">
       <div v-if="user" class="md:w-2/3 px-4">
         <div class="mt-16 md:mt-6">
           <header class="text-center flex justify-between w-full">
