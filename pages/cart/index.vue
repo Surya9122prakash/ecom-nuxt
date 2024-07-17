@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto px-4 py-6 max-w-screen-xl">
     <section class="lg:flex justify-between flex-col space-x-4">
-      <div v-if="user" class="md:w-2/3 px-4">
+      <div v-if="user" class="lg:w-2/3 px-4">
         <div class="mt-16 md:mt-6">
           <header class="text-center flex justify-between w-full">
             <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
@@ -72,7 +72,7 @@
           </div>
         </div>
       </div>
-      <div v-if="user && productList.length" class="md:w-1/3 mt-16 md:mt-6">
+      <div v-if="user && productList.length" class="lg:w-1/3 mt-16 md:mt-6">
         <header class="text-start flex flex-col justify-between w-full">
           <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Shipping Details</h1>
           <p class="mt-2">We use your Account details for shipping</p>
