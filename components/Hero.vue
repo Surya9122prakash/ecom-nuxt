@@ -55,7 +55,7 @@
 
 <template>
     <div v-if="product" class="relative overflow-hidden my-14 md:my-10">
-        <div class="lg:py-40 md:min-h-[650px] ">
+        <div class="lg:py-40 lg:min-h-[650px] ">
             <div class="relative mx-auto max-w-screen-xl sm:static px-6 lg:px-8">
                 <div class="max-w-xl text-start">
                     <h1 class="text-4xl md:text-5xl max-md:mb-6 font-bold tracking-tight text-orange-500">
@@ -81,7 +81,7 @@
                     </div>
 
                     <div
-                        class="hidden md:block absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                        class="hidden lg:block absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                         <div class="grid flex-shrink-0 grid-cols-1 gap-y-12">
                             <div class="flex items-center space-x-6 md:space-x-8">
                                 <div v-for="(image, index) in product.images.slice(0, 2)" :key="index"
