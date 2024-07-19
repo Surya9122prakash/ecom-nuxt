@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto px-4 py-6 max-w-screen-xl">
-    <section class="lg:flex justify-between flex-col space-x-4">
+    <section class="lg:flex justify-between lg:flex-row flex-col space-x-4">
       <div v-if="user" class="lg:w-2/3 px-4">
         <div class="mt-16 md:mt-6">
           <header class="text-center flex justify-between w-full">
@@ -122,31 +122,22 @@
       </div>
       <div v-if="!user" class="flex justify-center items-center w-full h-full py-64">
         <GoogleSignInButton @success="handleLoginSuccess" @error="handleLoginError"></GoogleSignInButton>
-        <!-- <hr />
-          <div v-if="user">
-            <pre>
-              {{ user }}
-            </pre>
-          </div> -->
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useNuxtApp, useFetch } from '#app';
-import {
-  GoogleSignInButton,
-  type CredentialResponse,
-} from "vue3-google-signin";
+import { GoogleSignInButton, type CredentialResponse } from 'vue3-google-signin';
 import useCartContext from '~/plugins/CartContext';
 
 const { CartContext } = useCartContext();
 
 const nuxtApp = useNuxtApp();
 
-const user = ref(null)
+const user = ref(null);
 const productList = ref([]);
 const address = ref('');
 const city = ref('');
@@ -168,7 +159,7 @@ const handleLoginSuccess = async (response: CredentialResponse) => {
 };
 
 const handleLoginError = () => {
-  console.error("Login failed");
+  console.error('Login failed');
 };
 
 const increaseProduct = (productId: string) => {
@@ -194,8 +185,8 @@ const updateProductList = async (cartProducts) => {
   if (Array.isArray(cartProducts) && cartProducts.length > 0) {
     try {
       const { data } = await useFetch('/api/cart', {
-        method: "POST",
-        body: { ids: cartProducts }
+        method: 'POST',
+        body: { ids: cartProducts },
       });
       productList.value = data.value || [];
     } catch (error) {
@@ -217,7 +208,7 @@ const checkUser = () => {
 };
 
 onMounted(() => {
-  updateProductList(CartContext.products)
+  updateProductList(CartContext.products);
   if (typeof window !== 'undefined' && window.location.href.includes('success')) {
     isSuccess.value = true;
     CartContext.clearCart();
@@ -232,7 +223,9 @@ onUnmounted(() => {
 });
 
 const uniqueProducts = computed(() => {
-  return productList.value.filter((value, index, self) => self.findIndex(p => p._id === value._id) === index);
+  return productList.value.filter(
+    (value, index, self) => self.findIndex(p => p._id === value._id) === index
+  );
 });
 
 const productQuantity = (id: string) => {
@@ -271,7 +264,6 @@ const stripeCheckout = async () => {
       }),
     });
 
-
     if (response.ok) {
       const data = await response.json();
       window.location.href = data.url;
@@ -282,7 +274,6 @@ const stripeCheckout = async () => {
     console.error('Checkout error:', error);
   }
 };
-
 </script>
 
 <style scoped>
